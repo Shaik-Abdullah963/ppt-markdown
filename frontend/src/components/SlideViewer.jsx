@@ -1,4 +1,6 @@
 // frontend/src/components/SlideViewer.jsx
+import ProgressBar from './ProgressBar';
+
 import React, { useState, useEffect, useCallback } from 'react';
 import { parseMarkdown } from '../utils/astParser';
 import CodeHighlighter from './CodeHighlighter';
@@ -50,6 +52,8 @@ export default function SlideViewer({ slides = [] }) {
 
   return (
     <div style={{ padding: '2rem', maxWidth: '800px', margin: '0 auto' }}>
+     {/* Progress bar, showing (current+1) of total */}
+      <ProgressBar current={current} total={slides.length} />
       {/* Navigation */}
       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
         <button onClick={prev} disabled={current === 0}>
