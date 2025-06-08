@@ -1,6 +1,8 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import ProgressBar from './ProgressBar';
+import '@testing-library/jest-dom'
+
 
 describe('<ProgressBar />', () => {
   it('renders correct fill width', () => {

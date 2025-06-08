@@ -1,6 +1,9 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import SlideViewer from './SlideViewer';
+import '@testing-library/jest-dom'
+
+
 
 const slides = ['# A', '# B'];
 

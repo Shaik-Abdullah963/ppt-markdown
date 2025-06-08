@@ -1,4 +1,6 @@
 import React from 'react';
+import '@testing-library/jest-dom'
+
 import { render, screen, fireEvent } from '@testing-library/react';
 import MarkdownEditor from './MarkdownEditor';
 
@@ -16,7 +18,7 @@ describe('<MarkdownEditor />', () => {
   });
 
   it('calls onSave when clicking Save Slide', async () => {
-    const saveFn = jest.fn().mockResolvedValue();
+    const saveFn = vi.fn().mockResolvedValue();
     render(<MarkdownEditor initialContent="Test" onSave={saveFn} />);
     const btn = screen.getByRole('button', { name: /save slide/i });
     fireEvent.click(btn);
