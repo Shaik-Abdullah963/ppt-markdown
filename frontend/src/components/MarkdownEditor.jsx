@@ -6,7 +6,8 @@ export default function MarkdownEditor({ initialContent = '' }) {
   const ast = parseMarkdown(markdown);
 
   return (
-    <div style={{ display: 'flex', height: '100%' }}>
+    <div className="editor-preview-container"
+  style={{ display: 'flex', height: '100%' }}>
       {/* Editor Pane */}
       <textarea
         value={markdown}
@@ -24,6 +25,7 @@ export default function MarkdownEditor({ initialContent = '' }) {
 
       {/* Live Preview Pane */}
       <div
+
         style={{
           flex: 1,
           padding: '1rem',
