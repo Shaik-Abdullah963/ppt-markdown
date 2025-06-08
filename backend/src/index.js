@@ -1,23 +1,29 @@
+// backend/src/index.js
 const express = require('express');
-const app = express();
 const cors = require('cors');
-app.use(cors());          // <— allow all origins (for local dev)
+const sequelize = require('./config/database.js');    // <— your DB config
+const slideRoutes = require('./routes/slideRoutes');
+
+const app = express();
+app.use(cors());
 app.use(express.json());
-// Parse JSON request bodies
-app.use(express.json());
+
 // Healthcheck endpoint
 app.get('/health', (req, res) => {
   res.json({ status: 'OK' });
 });
 
 // Slide CRUD
-const slideRoutes = require('./routes/slideRoutes');
 app.use('/slides', slideRoutes);
 
-// Start server
-const port = process.env.PORT || 4000;
-const server = app.listen(port, () => {
-  console.log(`API listening on port ${port}`);
-});
+// Only start DB sync & server when run directly (not when required by tests)
+if (require.main === module) {
+  sequelize.sync().then(() => {
+    const port = process.env.PORT || 4000;
+    app.listen(port, () => {
+      console.log(`API listening on port ${port}`);
+    });
+  });
+}
 
-module.exports = server;   // so tests can import & close it
+module.exports = app;
