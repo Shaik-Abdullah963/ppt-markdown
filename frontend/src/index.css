@@ -54,6 +54,11 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* 1. Global box-sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -64,5 +69,46 @@ button:focus-visible {
   }
   button {
     background-color: #f9f9f9;
+  }
+}
+
+/* 2. Layout defaults (ADD THESE) */
+.editor-preview-container {
+  /* default two-pane editor layout */
+  display: flex;
+  height: 100%;
+}
+
+.nav-bar {
+  /* default horizontal nav bar */
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+/* 3. Two-pane layout stacks on mobile */
+@media (max-width: 600px) {
+  /* In MarkdownEditor: wrapper must have class .editor-preview-container */
+  .editor-preview-container {
+    flex-direction: column;
+  }
+
+  /* In SlideViewer: nav-bar wrapper must have class .nav-bar */
+  .nav-bar {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  /* Make nav buttons full width */
+  .nav-bar button {
+    flex: 1;
+    width: 100%;
+  }
+
+  /* Stack editor textarea & preview pane */
+  .editor-preview-container textarea,
+  .editor-preview-container > div {
+    width: 100%;
+    min-height: 200px;
   }
 }

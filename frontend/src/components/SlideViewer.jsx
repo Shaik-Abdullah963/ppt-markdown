@@ -51,7 +51,7 @@ export default function SlideViewer({ slides = [] }) {
   }, [prev, next]);
 
   return (
-    <div style={{ padding: '2rem', maxWidth: '800px', margin: '0 auto' }}>
+    <div className = "nav-bar" style={{ padding: '2rem', maxWidth: '800px', margin: '0 auto' }}>
      {/* Progress bar, showing (current+1) of total */}
       <ProgressBar current={current} total={slides.length} />
       {/* Navigation */}
