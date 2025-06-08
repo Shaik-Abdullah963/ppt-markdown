@@ -12,14 +12,7 @@ export default function App() {
       </nav>
       <Routes>
         <Route path="/editor" element={<MarkdownEditor initialContent={"# Slide Title\n\nYour content here."} />} />
-        <Route
-         path="/viewer"
-        element={
-           <Viewer
-             markdown={`# Slide Title\n\n- bullet one\n- bullet two\n\n\`\`\`js\nconsole.log('Hello')\n\`\`\``}
-          />
-         }
-        />
+        <Route path="/viewer" element={<SlideViewer slides={sampleSlides} />} />
         <Route path="*" element={<div>Welcome! Select Editor or Viewer.</div>} />
       </Routes>
     </>
