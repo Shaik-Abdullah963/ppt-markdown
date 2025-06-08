@@ -1,5 +1,8 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
+app.use(cors());          // <— allow all origins (for local dev)
+app.use(express.json());
 // Parse JSON request bodies
 app.use(express.json());
 // Healthcheck endpoint
