@@ -1,5 +1,6 @@
 import React from 'react';
 import { parseMarkdown } from '../utils/astParser';
+import CodeHighlighter from './CodeHighlighter';
 
 /**
  * Recursively render an MDAST node tree as React elements.
@@ -29,11 +30,7 @@ function renderNode(node, key) {
       return <li key={key}>{children}</li>;
 
     case 'code':
-      return (
-        <pre key={key} style={{ background: '#2d2d2d', color: '#f8f8f2', padding: '1rem', overflowX: 'auto' }}>
-          <code>{node.value}</code>
-        </pre>
-      );
+      return <CodeHighlighter key={key} code={node.value} />;
 
     default:
       // fallback: render children
