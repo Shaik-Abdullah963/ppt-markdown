@@ -1,6 +1,7 @@
 import { Routes, Route, Link } from 'react-router-dom'
 import Editor from './components/Editor'
 import Viewer from './components/Viewer'
+import MarkdownEditor from './components/MarkdownEditor'
 
 export default function App() {
   return (
@@ -10,7 +11,7 @@ export default function App() {
         <Link to="/viewer">Viewer</Link>
       </nav>
       <Routes>
-        <Route path="/editor" element={<Editor />} />
+        <Route path="/editor" element={<MarkdownEditor initialContent={"# Slide Title\n\nYour content here."} />} />
         <Route path="/viewer" element={<Viewer />} />
         <Route path="*" element={<div>Welcome! Select Editor or Viewer.</div>} />
       </Routes>
