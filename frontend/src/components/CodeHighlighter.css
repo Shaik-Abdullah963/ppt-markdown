@@ -1,0 +1,19 @@
+.code-block {
+  background: #2d2d2d;
+  color: #f8f8f2;
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 4px;
+}
+
+.token-comment {
+  color: #6272a4;
+}
+
+.token-string {
+  color: #f1fa8c;
+}
+
+.token-keyword {
+  color: #ff79c6;
+}
